@@ -1,0 +1,15 @@
+.me-auto {
+  margin-right: auto !important;
+}
+.me-2 {
+  margin-right: 0.5rem !important;
+}
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdown-toggle,
+.dropdown-item {
+  cursor: pointer;
+}
