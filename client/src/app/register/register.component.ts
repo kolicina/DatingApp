@@ -17,11 +17,16 @@ export class RegisterComponent implements OnInit {
   }
   register() {
     this.accountService.register(this.model).subscribe(resp => {
-     
+
       this.cancel();
     }, error => {
       console.log(error);
-      this.toastr.error(error.error)
+      if (Array.isArray(error)) {
+        error.forEach(element => {
+          this.toastr.error(element);
+        });
+      }
+      //this.toastr.error(error.error)
     })
   }
   cancel() {
