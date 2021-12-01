@@ -21,27 +21,26 @@ export class AccountService {
         console.log(response);
         const user = response;
         if (user) {
-          localStorage.setItem("user", JSON.stringify(user));
-          this.currentUserSource.next(user);
+          this.setCurrentUser(user);
         }
       })
     )
       ;
   }
 
-  register(model:any) {
+  register(model: any) {
     return this.http.post(this.baseUrl + 'account/register', model).pipe(
-      map((user:User) => {
-       
+      map((user: User) => {
+
         if (user) {
-          localStorage.setItem("user", JSON.stringify(user));
-          this.currentUserSource.next(user);
+          this.setCurrentUser(user);
         }
       })
     )
   }
 
   setCurrentUser(user: User) {
+    localStorage.setItem("user", JSON.stringify(user));
     this.currentUserSource.next(user);
   }
 
