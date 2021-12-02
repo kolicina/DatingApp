@@ -38,7 +38,7 @@
       >
         <img
           class="img mr-2"
-          src="{{ user.photoUrl }}"
+          src="{{ user.photoUrl || './assets/user.png' }}"
           alt="{{ user.username }}"
         />
         <a
