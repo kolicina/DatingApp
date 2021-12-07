@@ -6,6 +6,8 @@ import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
+import { TimeagoIntl } from 'ngx-timeago';
+import { strings as englishStrings } from 'ngx-timeago/language-strings/hr';
 
 @Component({
   selector: 'app-member-edit',
@@ -23,7 +25,9 @@ export class MemberEditComponent implements OnInit {
   }
 
   constructor(private accountService: AccountService, private memberService: MembersService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService, intl: TimeagoIntl) {
+    intl.strings = englishStrings;
+    intl.changes.next();
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
       this.user = user;
     })

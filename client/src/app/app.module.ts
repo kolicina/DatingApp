@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, Injectable } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +28,13 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { DatePipe, registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import { TimeagoModule, TimeagoIntl, TimeagoFormatter, TimeagoCustomFormatter } from 'ngx-timeago';
 
+
+@Injectable()
+class MyCroatianFormat extends TimeagoIntl {
+
+}
 
 registerLocaleData(localeDe);
 @NgModule({
@@ -48,7 +54,8 @@ registerLocaleData(localeDe);
     MemberEditComponent,
     PhotoEditorComponent,
     TextInputComponent,
-    DateInputComponent
+    DateInputComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -58,7 +65,11 @@ registerLocaleData(localeDe);
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    TimeagoModule.forRoot({
+      intl: { provide: TimeagoIntl, useClass: MyCroatianFormat },
+      formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
+    })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
@@ -66,6 +77,7 @@ registerLocaleData(localeDe);
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     DatePipe,
+    TimeagoIntl,
     { provide: LOCALE_ID, useValue: "de" },
   ],
   bootstrap: [AppComponent]

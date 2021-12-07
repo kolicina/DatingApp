@@ -1,0 +1,4 @@
+.btn-primary.active:focus,
+.btn-primary {
+  box-shadow: none;
+}
