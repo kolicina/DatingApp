@@ -2,3 +2,6 @@
 .btn-primary {
   box-shadow: none;
 }
+.btn-group .btn:focus {
+  box-shadow: none;
+}

@@ -15,3 +15,6 @@
   display: inline-block;
   margin-bottom: 20px;
 }
+.btn-group .btn:focus {
+  box-shadow: none;
+}

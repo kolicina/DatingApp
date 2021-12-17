@@ -1,0 +1,9 @@
+.img-circle {
+  max-height: 50px;
+}
+.btn-danger {
+  background-color: #df382c;
+}
+.btn-group .btn:focus {
+  box-shadow: none;
+}

@@ -29,6 +29,7 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { DatePipe, registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { TimeagoModule, TimeagoIntl, TimeagoFormatter, TimeagoCustomFormatter } from 'ngx-timeago';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 
 @Injectable()
@@ -55,6 +56,7 @@ registerLocaleData(localeDe);
     PhotoEditorComponent,
     TextInputComponent,
     DateInputComponent,
+    MemberMessagesComponent,
 
   ],
   imports: [
