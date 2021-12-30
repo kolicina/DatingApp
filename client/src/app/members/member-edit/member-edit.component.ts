@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
+import { HotToastService } from '@ngneat/hot-toast';
 import { take } from 'rxjs/operators';
 import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
@@ -25,7 +26,7 @@ export class MemberEditComponent implements OnInit {
   }
 
   constructor(private accountService: AccountService, private memberService: MembersService,
-    private toastr: ToastrService, intl: TimeagoIntl) {
+    private toastr: HotToastService, intl: TimeagoIntl) {
     intl.strings = englishStrings;
     intl.changes.next();
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {

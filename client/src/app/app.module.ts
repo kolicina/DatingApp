@@ -35,6 +35,8 @@ import { HasRoleDirective } from './_directives/has-role.directive';
 import { UserManagmentComponent } from './admin/user-managment/user-managment.component';
 import { PhotoManagmentComponent } from './admin/photo-managment/photo-managment.component';
 import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
+//import { ToastrModule } from 'ngx-toastr';
+import { HotToastModule, ToastPosition } from '@ngneat/hot-toast';
 
 
 @Injectable()
@@ -74,6 +76,7 @@ registerLocaleData(localeDe);
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    //ToastrModule.forRoot({ positionClass: 'toast-bottom-right', preventDuplicates: true }),
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
@@ -81,7 +84,8 @@ registerLocaleData(localeDe);
     TimeagoModule.forRoot({
       intl: { provide: TimeagoIntl, useClass: MyCroatianFormat },
       formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
-    })
+    }),
+    HotToastModule.forRoot({ position: 'bottom-right', dismissible: true })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

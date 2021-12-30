@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   maxDate: Date;
   validationErrors: string[] = [];
 
-  constructor(private accountService: AccountService, private toastr: ToastrService,
+  constructor(private accountService: AccountService,
     private fb: FormBuilder, private datePipe: DatePipe, private router: Router) { }
 
   ngOnInit(): void {

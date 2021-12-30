@@ -7,13 +7,14 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { NavigationExtras, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
+import { HotToastService } from '@ngneat/hot-toast';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router, private toastr: ToastrService) { }
+  constructor(private router: Router, private toastr: HotToastService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
@@ -40,7 +41,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
               break;
             case 401:
-              this.toastr.error(error.statusText === 'OK' ? 'Unauthorized' : error.statusText, error.status);
+              this.toastr.info(error.statusText === 'OK' ? 'Unauthorized' : error.statusText, error.status);
               break;
             case 404:
               this.router.navigateByUrl('/not-found');

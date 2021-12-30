@@ -1,7 +1,7 @@
 import { Injectable, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { ToastrModule } from 'ngx-toastr';
+
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -16,7 +16,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   imports: [
     CommonModule,
     BsDropdownModule.forRoot(),
-    ToastrModule.forRoot({ positionClass: 'toast-bottom-right', preventDuplicates: true }),
+
     TabsModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,
@@ -28,14 +28,15 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   ],
   exports: [
     BsDropdownModule,
-    ToastrModule,
+
     TabsModule,
     NgxGalleryModule,
     FileUploadModule,
     BsDatepickerModule,
     PaginationModule,
     ButtonsModule,
-    ModalModule
+    ModalModule,
+
 
   ]
 })
