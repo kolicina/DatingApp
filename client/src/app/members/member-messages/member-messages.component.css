@@ -47,3 +47,6 @@ ul {
   min-height: 608px;
   margin-bottom: 10px;
 }
+.card-body::-webkit-scrollbar {
+  display: none;
+}

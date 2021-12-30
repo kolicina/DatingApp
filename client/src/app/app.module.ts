@@ -37,6 +37,7 @@ import { PhotoManagmentComponent } from './admin/photo-managment/photo-managment
 import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
 //import { ToastrModule } from 'ngx-toastr';
 import { HotToastModule, ToastPosition } from '@ngneat/hot-toast';
+import { ConfirmDialogComponent } from './modals/confirm-dialog/confirm-dialog.component';
 
 
 @Injectable()
@@ -69,6 +70,7 @@ registerLocaleData(localeDe);
     UserManagmentComponent,
     PhotoManagmentComponent,
     RolesModalComponent,
+    ConfirmDialogComponent,
 
   ],
   imports: [

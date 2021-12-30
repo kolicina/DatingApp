@@ -35,6 +35,7 @@ export class PresenceService {
       console.log(username + " UserIsOnline");
       this.onlineUsers$.pipe(take(1)).subscribe(usernames => {
         this.onlineUsersSource.next([...usernames, username]);
+        console.log(this.onlineUsersSource);
       })
     });
 

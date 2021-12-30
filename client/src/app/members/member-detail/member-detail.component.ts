@@ -16,6 +16,7 @@ import { PresenceService } from 'src/app/_services/presence.service';
 import { AccountService } from 'src/app/_services/account.service';
 import { User } from 'src/app/_models/user';
 import { take } from 'rxjs/operators';
+import { BusyService } from 'src/app/_services/busy.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -37,6 +38,7 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
     private accountService: AccountService,
     private toastr: HotToastService,
     private router: Router,
+    private busyService: BusyService,
     intl: TimeagoIntl) {
     intl.strings = englishStrings;
     intl.changes.next();
@@ -53,6 +55,7 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
     });
 
     this.route.queryParams.subscribe(params => {
+      this.busyService.busy();
       params.tab ? this.selectTab(params.tab) : this.selectTab(0);
     });
 
@@ -91,6 +94,7 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
 
   selectTab(tabId: number) {
     this.memberTabs.tabs[tabId].active = true;
+    this.busyService.idle();
   }
 
   ontabActivated(data: TabDirective) {
@@ -98,6 +102,7 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
     if (this.activeTab.heading === 'Messages') {
       //this.loadMessages();
       this.messageService.createHubConnection(this.user, this.member.username);
+      this.busyService.busy();
       setTimeout(() => this.selectTab(3), 200);
 
     }
